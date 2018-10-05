@@ -83,12 +83,8 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     private static final String TAG = MainActivity.class.getName();
     private static final int NO_BLUETOOTH_ID = 0;
     private static final int BLUETOOTH_DISABLED = 1;
-    private static final int START_LIVE_DATA = 2;
-    private static final int STOP_LIVE_DATA = 3;
-    private static final int SETTINGS = 4;
     private static final int GET_DTC = 5;
     private static final int TABLE_ROW_MARGIN = 7;
-    private static final int NO_ORIENTATION_SENSOR = 8;
     private static final int NO_GPS_SUPPORT = 9;
     private static final int TRIPS_LIST = 10;
     private static final int SAVE_TRIP_NOT_AVAILABLE = 11;
@@ -331,8 +327,6 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         List<Sensor> sensors = sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
         if (sensors.size() > 0)
             orientSensor = sensors.get(0);
-        else
-            showDialog(NO_ORIENTATION_SENSOR);
 
         // create a log instance for use by this application
         triplog = TripLog.getInstance(this.getApplicationContext());
@@ -414,25 +408,13 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, START_LIVE_DATA, 0, getString(R.string.menu_start_live_data));
-        menu.add(0, STOP_LIVE_DATA, 0, getString(R.string.menu_stop_live_data));
         menu.add(0, GET_DTC, 0, getString(R.string.menu_get_dtc));
         menu.add(0, TRIPS_LIST, 0, getString(R.string.menu_trip_list));
-        menu.add(0, SETTINGS, 0, getString(R.string.menu_settings));
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case START_LIVE_DATA:
-                startLiveData();
-                return true;
-            case STOP_LIVE_DATA:
-                stopLiveData();
-                return true;
-            case SETTINGS:
-                updateConfig();
-                return true;
             case GET_DTC:
                 getTroubleCodes();
                 return true;
@@ -538,9 +520,6 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
                 return build.create();
-            case NO_ORIENTATION_SENSOR:
-                build.setMessage(getString(R.string.text_no_orientation_sensor));
-                return build.create();
             case NO_GPS_SUPPORT:
                 build.setMessage(getString(R.string.text_no_gps_support));
                 return build.create();
@@ -552,21 +531,12 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     }
 
     public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem startItem = menu.findItem(START_LIVE_DATA);
-        MenuItem stopItem = menu.findItem(STOP_LIVE_DATA);
-        MenuItem settingsItem = menu.findItem(SETTINGS);
         MenuItem getDTCItem = menu.findItem(GET_DTC);
 
         if (service != null && service.isRunning()) {
             getDTCItem.setEnabled(false);
-            startItem.setEnabled(false);
-            stopItem.setEnabled(true);
-            settingsItem.setEnabled(false);
         } else {
             getDTCItem.setEnabled(true);
-            stopItem.setEnabled(false);
-            startItem.setEnabled(true);
-            settingsItem.setEnabled(true);
         }
 
         return true;

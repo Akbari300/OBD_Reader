@@ -20,11 +20,11 @@ repositories {
 }
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 26
     android.buildToolsVersion "23.0.1"
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 21
+        targetSdkVersion 26
         applicationId 'com.github.pires.obd.reader'
     }
 
