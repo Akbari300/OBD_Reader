@@ -118,4 +118,5 @@
     <string name="btnregister">Register</string>
     <string name="btnRegister">Register</string>
     <string name="Loginhere">Login</string>
+    <string name="registrationpage">Create Account</string>
 </resources>

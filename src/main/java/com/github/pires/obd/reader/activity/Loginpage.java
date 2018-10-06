@@ -34,7 +34,7 @@ public class Loginpage extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                startActivity(new Intent(Loginpage.this, Registration.class));
+                startActivity(new Intent(view.getContext(), Registrationpage.class));
             }
         });
 
