@@ -43,7 +43,8 @@
         <activity
             android:name="com.github.pires.obd.reader.activity.TripListActivity"
             android:launchMode="singleInstance"
-            android:label="@string/title_activity_trips_list"></activity>
+            android:label="@string/title_activity_trips_list"
+            android:parentActivityName=".activity.MainActivity"></activity>
 
         <service
             android:name="com.github.pires.obd.reader.io.ObdGatewayService"
