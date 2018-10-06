@@ -7,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.pires.obd.reader.R;
 
@@ -26,8 +27,16 @@ public class Loginpage extends AppCompatActivity {
 
         _txtUserName = findViewById(R.id.txtUrname);
         _txtPassword = findViewById(R.id.txtPassword);
-        _txtRegister = findViewById(R.id.txtregister);
+        _txtRegister = findViewById(R.id.registerclick);
         _cardView = findViewById(R.id.btnlogin);
+
+        _txtRegister.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(Loginpage.this, Registration.class));
+            }
+        });
 
 
         _cardView.setOnClickListener(new View.OnClickListener(){
