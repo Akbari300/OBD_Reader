@@ -106,4 +106,16 @@
     <string name="pref_dev_email_title">Developer Email</string>
     <string name="pref_dev_email_summary">Logs will be emailed to this address</string>
     <string name="text_noerrors">There were no errors found.!</string>
+
+
+    <string name="logo_string">Logo for project</string>
+    <string name="LoginButton">Login</string>
+    <string name="RegisterLink">Register here</string>
+    <string name="fName">First Name</string>
+    <string name="lName">Last Name</string>
+    <string name="Username">User Name</string>
+    <string name="password">Password</string>
+    <string name="btnregister">Register</string>
+    <string name="btnRegister">Register</string>
+    <string name="Loginhere">Login</string>
 </resources>

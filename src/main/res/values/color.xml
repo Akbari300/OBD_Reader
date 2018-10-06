@@ -7,4 +7,8 @@
     <!-- Blue Grey 700 -->
     <color name="accent">#ff5252</color>
     <!-- Red A200 -->
+
+    <color name="textColor">#ffffff</color>
+    <color name="HintColor">#919090</color>
+    <color name="registerbtn">#f1935c</color>
 </resources>
